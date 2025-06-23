@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestNgBigin">
+  <test thread-count="6" name="BasicTestNGTesting">
+    <classes>
+      <class name="TestNGBigin.PriorityTest"/>
+      <class name="TestNGBigin.Grouping"/>
+      <class name="TestNGBigin.TestNGFeatures"/>
+      <class name="TestNGBigin.InvocationCountTest"/>
+      <class name="TestNGBigin.GoogleTest"/>
+      <class name="TestNGBigin.ExceptionTimeOutTest"/>
+    </classes>
+    
+  </test> <!-- Test -->
+  
+</suite> <!-- Suite -->
