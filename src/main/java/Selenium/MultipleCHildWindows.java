@@ -24,19 +24,21 @@ public class MultipleCHildWindows {
         driver.findElement(By.id("windowButton")).click();
         driver.findElement(By.id("messageWindowButton")).click();
 
-        String mainWindow=driver.getWindowHandle();
+
         Set<String> s1=driver.getWindowHandles();
         Iterator<String> i1=s1.iterator();
         while (i1.hasNext()){
 
             String childWindow=i1.next();
+            String mainWindow=driver.getWindowHandle();
             if (mainWindow.equalsIgnoreCase(childWindow)){
                 driver.switchTo().window(childWindow);
                 driver.close();
                 System.out.println("child window is closed");
             }
+            driver.switchTo().window(mainWindow);
         }
-        driver.switchTo().window(mainWindow);
+
 
 driver.quit();
     }

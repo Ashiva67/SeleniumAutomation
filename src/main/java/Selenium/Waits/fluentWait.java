@@ -1,4 +1,4 @@
-package Selenium;
+package Selenium.Waits;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;

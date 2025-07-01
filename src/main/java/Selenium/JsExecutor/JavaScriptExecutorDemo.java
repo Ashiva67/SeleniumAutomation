@@ -1,15 +1,37 @@
-package Selenium;
-import java.util.concurrent.TimeUnit;
+package Selenium.JsExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
-public class JavaScriptExecutor {
-    public static void main(String[] args) {
+import java.util.List;
+
+class JavaScriptExecutorDemo {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize(); // for maximizing the window
+
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
+        Thread.sleep(1000);
+        js.executeScript("document.querySelector('.tableFixHead').scrollTop=5000");
+
+        List<WebElement> values=driver.findElements(By.cssSelector(".tableFixHead td:nth-child(4)"));
+int sum=0;
+        for (int i=0; i<values.size(); i++){
+            sum=sum+Integer.parseInt(values.get(i).getText());
+        }
+        System.out.println(sum);
+       String text= driver.findElement(By.xpath("//div[text()=' Total Amount Collected: 296 ']")).getText();
+       int total=Integer.parseInt(text.split(":")[1].trim());
+       Assert.assertEquals(sum, total);
+
+    }
+}
+
+/*driver.manage().window().maximize(); // for maximizing the window
         driver.manage().deleteAllCookies(); // for deleting the cookies
         // dynamic wait
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
@@ -38,7 +60,4 @@ public class JavaScriptExecutor {
         try {
             Thread.sleep(30);
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
+            e.printStackTrace();*/

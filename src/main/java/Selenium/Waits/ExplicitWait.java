@@ -1,4 +1,4 @@
-package Selenium;
+package Selenium.Waits;
 
 public class ExplicitWait {
 
